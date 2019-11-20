@@ -1,25 +1,29 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Emails</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @emails.each do |email| %>
-      <tr>
-        <td><%= link_to 'Show', email %></td>
-        <td><%= link_to 'Edit', edit_email_path(email) %></td>
-        <td><%= link_to 'Destroy', email, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Email', new_email_path %>
+<div class="container mail-container border">
+  <div class="mail-headers row border d-flex p-3">
+    <h4>THPmail</h4>
+    <%= link_to 'Get a new mail', new_email_path,remote: true, class: "btn btn-primary offset-sm-9"%>
+  </div>
+  <div class="mail-content row">
+    <div class="mail-list">
+      <ul>
+        <% @emails.each do |email| %>
+          <li id="<%= email.id%>">
+            <%= email.object %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="mail-display border">
+      <h4 id="mail-display-object">No Email Selected</h4>
+      <p id="mail-display-body"></p>
+    </div>
+    <div class="mail-body d-none">
+      <% @emails.each do |email| %>
+        <p id="body-<%= email.id%>">
+          <%= email.body %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+</div>

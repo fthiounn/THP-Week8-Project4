@@ -1,4 +1,5 @@
 class EmailsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_email, only: [:show, :edit, :update, :destroy]
 
   # GET /emails
@@ -14,7 +15,7 @@ class EmailsController < ApplicationController
 
   # GET /emails/new
   def new
-    @email = Email.new
+    create
   end
 
   # GET /emails/1/edit
@@ -24,15 +25,17 @@ class EmailsController < ApplicationController
   # POST /emails
   # POST /emails.json
   def create
-    @email = Email.new(email_params)
+    @email = Email.new(body: Faker::Lorem.paragraph, object: Faker::Book.title)
 
     respond_to do |format|
       if @email.save
         format.html { redirect_to @email, notice: 'Email was successfully created.' }
         format.json { render :show, status: :created, location: @email }
+        format.js {}
       else
         format.html { render :new }
         format.json { render json: @email.errors, status: :unprocessable_entity }
+        format.js {}
       end
     end
   end
@@ -62,13 +65,13 @@ class EmailsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_email
-      @email = Email.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_email
+    @email = Email.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def email_params
-      params.fetch(:email, {})
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def email_params
+    params.fetch(:email, {})
+  end
 end

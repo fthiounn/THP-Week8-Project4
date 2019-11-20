@@ -5,8 +5,8 @@
     <%= link_to email_path(@email), data: {:confirm => 'Are you sure?'}, :method => :delete, remote: true  do %>
       <%= fa_icon "trash-alt", style: "color:orange;"%>
     <% end %>
-    <%= link_to email_path(@email), data: {:confirm => 'Are you sure?'}, remote: true  do %>
-      <%= fa_icon "update", style: "color:orange;"%>
+    <%= link_to email_path(@email,invertRead: true), remote: true, :method => :put do %>
+      <%= fa_icon "trash-alt", style: "color:blue;"%>
     <% end %>
   </div>
 </div>

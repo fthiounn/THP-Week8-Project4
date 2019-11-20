@@ -1,0 +1,7 @@
+$(document).ready(function(){
+  <% if @email.read %>
+    $('#<%= @email.id%>').removeClass('mailRead');
+  <% else %>
+    $('#<%= @email.id%>').addClass('mailRead');
+  <% end%>
+});

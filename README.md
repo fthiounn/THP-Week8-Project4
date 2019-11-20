@@ -3,7 +3,11 @@
 
 ### Notes & Use
 
-> Heroku : 
+> Hello Correcteur ! Je ne vais malheureusement etre disponible uniquement jusqu'à 10am ce vendredi
+> Si jamais on se rate je vais te mettre present de mon coté, ce serait cool de faire la meme du tiens :D
+> Merci !!
+
+> Heroku link : 
 
 
 ## Projet : Gmail-like en AJAX

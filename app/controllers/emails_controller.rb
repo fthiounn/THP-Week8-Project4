@@ -11,6 +11,8 @@ class EmailsController < ApplicationController
   # GET /emails/1
   # GET /emails/1.json
   def show
+    @email.update(read: true) if !@email.read
+
     respond_to do |format|
       format.html{}
       format.js{}
@@ -47,13 +49,23 @@ class EmailsController < ApplicationController
   # PATCH/PUT /emails/1
   # PATCH/PUT /emails/1.json
   def update
-    respond_to do |format|
-      if @email.update(email_params)
-        format.html { redirect_to @email, notice: 'Email was successfully updated.' }
-        format.json { render :show, status: :ok, location: @email }
-      else
-        format.html { render :edit }
-        format.json { render json: @email.errors, status: :unprocessable_entity }
+    if params[:invertRead] == true
+      @email.update(read: !@email.read)
+      respond_to do |format|
+        format.html{}
+        format.js{}
+      end
+    else
+      respond_to do |format|
+        if @email.update(email_params)
+          format.html { redirect_to @email, notice: 'Email was successfully updated.' }
+          format.json { render :show, status: :ok, location: @email }
+          format.js {}
+        else
+          format.html { render :edit }
+          format.json { render json: @email.errors, status: :unprocessable_entity }
+          format.js {}
+        end
       end
     end
   end

@@ -1,0 +1,5 @@
+$(document).ready(function() {
+  $('#content-child').remove();
+  $('#mail-display').append("<%= j render 'show',email: @email %>");
+
+});

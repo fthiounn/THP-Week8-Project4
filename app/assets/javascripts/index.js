@@ -68,7 +68,6 @@ $(document).ready(function() {
   var mailContent = $('.mail-body').find('p');
   for(let i=0; i < mailList.length; i++){
       $('.mail-list').find('li').get(i).onclick = function(event){
-        console.log(  );
         $('#mail-display-object').text($('#'+event.target.id).text());
         $('#mail-display-body').text($('#body-'+ event.target.id).text());
       };

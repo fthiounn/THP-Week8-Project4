@@ -9,21 +9,12 @@
       <ul>
         <% @emails.each do |email| %>
           <li id="<%= email.id%>">
-            <%= email.object %>
+            <%= link_to email.object, email_path(email), remote: true %>
           </li>
         <% end %>
       </ul>
     </div>
-    <div class="mail-display border">
-      <h4 id="mail-display-object">No Email Selected</h4>
-      <p id="mail-display-body"></p>
-    </div>
-    <div class="mail-body d-none">
-      <% @emails.each do |email| %>
-        <p id="body-<%= email.id%>">
-          <%= email.body %>
-        </p>
-      <% end %>
+    <div class="border" id="mail-display">
     </div>
   </div>
 </div>

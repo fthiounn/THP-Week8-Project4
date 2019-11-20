@@ -17,4 +17,9 @@ require 'faker'
     my_task.save
   end
 end
-puts "seeding db"
+10.times do
+  Email.create(
+    body: Faker::Lorem.paragraph,
+  object: Faker::Book.title)
+end
+puts "seeding Category, tasks and emails"

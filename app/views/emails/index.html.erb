@@ -8,7 +8,7 @@
     <div class="mail-list">
       <ul>
         <% @emails.each do |email| %>
-          <li id="<%= email.id%>" <% if !email.read  %> class="mailRead" <% end %> >
+          <li id="<%= email.id%>" <% if email.read  %> class="font-weight-bold" <% end %> >
             <%= link_to email.object, email_path(email), remote: true %>
           </li>
         <% end %>
